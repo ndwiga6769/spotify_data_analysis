@@ -108,3 +108,12 @@ ORDER BY 2 DESC
 SELECT *
 FROM tracks
 WHERE (energy / liveness) > 1.2;
+
+-- Calculate the cumulative sum of likes for tracks ordered by the number of views, using window functions.
+
+SELECT 
+    track,
+    likes,
+    views,
+    SUM(likes) OVER (ORDER BY views) AS cumulative_likes
+FROM spotify;
